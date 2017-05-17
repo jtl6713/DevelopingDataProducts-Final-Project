@@ -11,9 +11,9 @@ library(shiny)
 library(reshape2)
 library(xlsx)
 library(rCharts)
-USState<-read.xlsx("data/USStates.xlsx",header=TRUE,sheetIndex=1)
-USStatesData<-melt(USState,id.vars="State")
-names(USStatesData)<-c("State","Indicator","Value")
+USState <- read.xlsx('data/USHomicideRates.xlsx',header=TRUE,sheetIndex=1)
+USStatesData <- melt(USState,id.vars="State")
+names(USStatesData) <- c("State","Indicator","Value")
 
 shinyServer(
         function(input, output) {
@@ -34,4 +34,4 @@ shinyServer(
                 # This will display the instructions
                 output$out2 <- renderText({"To use the chart simply select the state and click the <GO> button. 
                                   Data shows the trend by state for homicide rates from 2000 - 2014"})
-        })       
+        })
